@@ -1,31 +1,47 @@
 import React from 'react'
-import"./Section.css"
+import styled from "styled-components"
+import './Section.css'
 
-function Section() {
+
+function Section ({title, description, leftBtnText, rightBtnText, backgroundImg }) {
     return (
-        <div className='Wrap'>
+        <Wrap bgImage = {backgroundImg}>
             <div className='item__text'>
                 <h1>
-                    Model S 
+                    {title} 
                 </h1>
                 <p>
-                    Order online for touchless delivery
+                    {description}
                 </p>
             </div>
             <div className='buttons'>
                 <div className='button__group'>
                     <button className='left__button'>
-                        Custom Order
+                        {leftBtnText}
                     </button>
                     <button className='right__button'>
-                        Existing Inventory
+                        {rightBtnText}
                     </button>
                 </div>
                 <img className='down__arrow' 
                 src = '/images/down-arrow.svg'/>
             </div>
-        </div>
+        </Wrap>
     )
 }
 
 export default Section
+
+const Wrap = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-image: ${props => 'url("/images/${props.bgImage}")'}
+    
+`
